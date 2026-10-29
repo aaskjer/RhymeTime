@@ -176,10 +176,19 @@ match one of them; endings and the dictionary play no part.
 
 **Q: What currency does the game use?**
 
-StreamUP's **Currency Core** is picked up automatically — the game reads its
-`currency_ProductSettings` global and takes the variable and the display name from there. Without
-it, the *Points variable* and *Points name* on the Game page apply: the variable is the Streamer.bot
-user variable the stake comes out of, the name fills `{currency}` in chat.
+Whichever one you have. The game looks for them in this order:
+
+| | Where it looks | What it takes |
+|---|---|---|
+| 1 | **Currency Core** by StreamUP | `currency_ProductSettings` → `pointsVar`, `pointsName` |
+| 2 | **LOYALTY POINTS** by tawmae | `tawmae_Settings_LOYALTY POINTS` → `globalVariableName`, `pointsName` |
+| 3 | tawmae's older globals | `loyaltyPointsVariable`, `loyaltyPointsName` |
+| 4 | The settings window | *Points variable* and *Points name* on the Game page |
+
+The first one that answers wins, and the Streamer.bot log says which it was. Neither product needs
+anything configured here; the two fields on the Game page are for a points system of your own — the
+variable is the Streamer.bot user variable the stake comes out of, the name fills `{currency}` in
+chat.
 
 ***
 

@@ -123,9 +123,9 @@ punctuation and double spaces ignored.
 
 ## Points
 
-The currency is detected from StreamUP's **Currency Core** when it is installed — the game reads its
-`currency_ProductSettings` global and uses the variable and name from there. Any other currency
-takes one variable name on the Game page.
+The currency finds itself. **Currency Core** by StreamUP is used when it is installed, then
+**LOYALTY POINTS** by tawmae, and only if neither is there do the *Points variable* and *Points
+name* on the Game page apply. Nothing to configure for either product.
 
 A win pays `stake × multiplier` for the bank the word came from (1.5× easy, 2× medium, 3× hard by
 default). A loss costs the stake. A battle pays the moderator's stake if they staked one, otherwise

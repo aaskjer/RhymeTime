@@ -35,7 +35,10 @@ offer, which word bank a round draws from, and whether a guess that merely ends 
 checked against a dictionary first.
 
 Under it the currency — the Streamer.bot user variable the stake comes out of and the name that
-fills `{currency}` — then the bets and the payout. The default bet is what `!Rhyme` stakes without
+fills `{currency}`. Currency Core by StreamUP and LOYALTY POINTS by tawmae are found on their own
+and override both fields, Currency Core first, so those two need nothing from you.
+
+Then the bets and the payout. The default bet is what `!Rhyme` stakes without
 an amount; the minimum and maximum frame what a chatter may type. Set the default bet to `0` and the
 game is **free**: nothing is staked and nothing is paid out, and the header says so.
 

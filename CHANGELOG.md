@@ -50,8 +50,11 @@ two files of your own under `Chat Games/RhymeTime`.
   chat. A group that no longer exists is logged rather than failing the round.
 - **Cooldowns written onto the command.** The two cooldowns on the Game page are saved onto `!Rhyme`
   itself, so Streamer.bot's own fields follow the window instead of fighting it.
-- **Currency detection.** StreamUP's Currency Core is picked up from its `currency_ProductSettings`
-  global; any other currency takes one variable name on the Game page.
+- **Currency detection.** Currency Core by StreamUP is picked up from its `currency_ProductSettings`
+  global, LOYALTY POINTS by tawmae from `tawmae_Settings_LOYALTY POINTS` or the older
+  `loyaltyPointsVariable` / `loyaltyPointsName` globals, in that order. Whichever answers first
+  supplies both the variable the points live in and the name chat sees; the Game page is only for a
+  points system of your own.
 - **An update check** in the background when the window opens, as a pill in the header rather than a
   popup that blocks the window.
 - Settings and word banks are written atomically: the previous copy is kept as `.bak`, and a damaged
