@@ -52,8 +52,8 @@ i think... BEAM
 - 💰 **Bets or free play.** Chatters stake a number or `all`, `half`, `third`, `quarter`, `random`. A default
   bet of `0` makes the whole game free.
 - 📺 **An overlay for OBS.** The word on stream with its countdown and the attempts left, then the winning
-  rhyme and what it paid. It ships with the import and runs on Streamer.bot's own WebSocket server, so there
-  is nothing extra to install.
+  rhyme and what it paid. It ships with the import, runs on Streamer.bot's own WebSocket server, and one
+  button sets it up in OBS. Place, size, colours and what it shows are all in the window.
 - ⚙️ **One settings window.** Eight pages with keyboard shortcuts, light and dark themes, and all 19 chat
   messages with a live preview.
 

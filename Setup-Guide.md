@@ -20,7 +20,7 @@ change that there if you want someone else to be able to open a battle.
 Go to `Actions`, select `[RT] - Settings`, right-click the `Test` trigger and choose `Test Trigger`.
 That opens the settings window.
 
-Seven pages sit on the rail down the left side. `Ctrl+1` to `Ctrl+7` jump between them, `Ctrl+S`
+Eight pages sit on the rail down the left side. `Ctrl+1` to `Ctrl+8` jump between them, `Ctrl+S`
 saves. Every field carries a tooltip, so hovering usually answers the question faster than this page
 does.
 
@@ -99,6 +99,59 @@ of them. Emptying *Examples after a loss* posts nothing after a lost round.
 
 The number format and which account speaks sit at the bottom — the bot account and `/me` apply
 separately to the game's messages and to the cooldown replies. `/me` is Twitch only.
+
+## Overlay
+<p align="center"><img alt="Overlay page" src="https://github.com/aaskjer/RhymeTime/blob/main/Assets/setup-guide/overlay.png?raw=true"></p>
+
+A browser source for OBS that shows the round on stream: the word with the ending picked out, the
+clock, the attempts left, and then the rhyme that won it and what it paid. It ships inside the
+import, so there is nothing to download.
+
+Switch *Send rounds to the overlay* on, then switch Streamer.bot's own WebSocket server on under
+`Servers/Clients` → `WebSocket Server` and tick *Auto Start*. The port on this page has to be the one
+shown there, 8080 unless you changed it. If you turned its authentication on, add `&password=`
+followed by that password to the end of the URL.
+
+### Set it up in OBS
+
+**Set the overlay up in OBS** does the rest for you: it saves, writes the overlay page, and over
+Streamer.bot's OBS connection creates the scene and puts a browser source in it, the size of your
+canvas, pointed at the overlay. OBS has to be connected in Streamer.bot under
+`Stream Apps` ▸ `OBS Studio`. *Connection #* is 0 unless you have more than one OBS there; *Scene*
+is created if it is not there yet, and a *Source* name OBS already knows is left alone rather than
+overwritten.
+
+By hand works too: *Copy URL* writes the page to `Chat Games/RhymeTime/Overlay` and copies its
+address — saving with the overlay on writes it as well — then add a **Browser** source in OBS,
+untick *Local file*, paste the URL and set the size to 1920 × 1080. *Try the demo* opens the same
+page in your browser playing sample rounds, which is the easiest way to place and size the source
+before anyone plays.
+
+### How it looks
+
+Everything under *Size and place*, *What it shows* and *Colours* travels with the round itself, so a
+change is on screen the next time somebody plays and OBS never has to be touched again.
+
+*Place* puts the card left, centre or right; *Size %* scales it; *Result shown* is how long the
+winning rhyme, or the rhymes after a lost round, stays up. The four switches take the ending pill,
+the attempt dots, the stake chip and the rhymes after a loss off the card. *Accent* colours the
+word's ending, the wordmark and the clock bar, with every lighter shade worked out from it;
+*Battle*, *Won* and *Card* do the same for a battle, a win and the card behind it all. Click a
+swatch for the picker.
+
+The card follows one round at a time, the newest: a battle takes the card from a single-player round
+that is still running.
+
+What this page does not reach goes in the Browser source's own *Custom CSS*, which is read after
+these settings and wins:
+
+```css
+:root { --rt-width: 480px; --rt-edge: 40px; --rt-radius: 8px; }
+```
+
+The URL takes `&platform=twitch` to show one platform's rounds only, `&lang=de` for the German
+wording, `&position=center` to overrule *Place*, and `&debug=1` to see whether it reached
+Streamer.bot.
 
 ## How to play
 <p align="center"><img alt="How to play page" src="https://github.com/aaskjer/RhymeTime/blob/main/Assets/setup-guide/how-to-play.png?raw=true"></p>

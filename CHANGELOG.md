@@ -3,6 +3,25 @@
 Releases are in the [release notes](https://github.com/aaskjer/RhymeTime/releases).
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+### Added
+
+- **An OBS overlay.** A browser source that shows the round on stream: the word with its ending
+  picked out, the countdown, the attempts left, and then the rhyme that won it and what it paid, or
+  the examples after a lost one. Battles get the same card in their own colour. It ships inside the
+  import — the new **Overlay** page writes the page out, copies the URL for OBS and opens a demo
+  that plays sample rounds — and it listens to Streamer.bot's own WebSocket server, so there is
+  nothing extra to download or install. Off until you switch it on.
+- **One button sets the overlay up in OBS.** Over Streamer.bot's OBS connection it creates the scene
+  and puts a browser source in it, the size of your canvas, pointed at the overlay. A source name
+  OBS already knows is left alone rather than overwritten.
+- **The overlay is yours to style from the window.** Where the card sits, how big it is, how long a
+  result stays up, whether it shows the ending, the attempt dots, the stake and the rhymes after a
+  loss, and four colours with a picker behind each swatch. All of it travels with the round, so a
+  change is on screen the next time somebody plays and OBS is never touched again. The Browser
+  source's own Custom CSS is still read afterwards and still wins.
+
 ## [1.0.0] - 2026-10-29
 
 The first release. Three actions — `[RT] - Settings`, `RhymeTime Game` and `RhymeTime Battle` — and

@@ -358,6 +358,65 @@ cooldown replies.
 
 ---
 
+## 📺 OBS Overlay
+
+**Q: What is the overlay?**
+
+A browser source that puts the round on stream: the word with its ending picked out, the countdown,
+the attempts left, and then the rhyme that won it and what it paid. It ships inside the import —
+the **Overlay** page writes the page out for you, and it talks to Streamer.bot's own WebSocket
+server, so there is nothing else to install.
+
+***
+
+**Q: How do I add it to OBS?**
+
+Switch *Send rounds to the overlay* on, then switch Streamer.bot's WebSocket server on under
+`Servers/Clients` → `WebSocket Server` with *Auto Start* ticked. Then press **Set the overlay up in
+OBS**: it creates the scene and puts a browser source in it the size of your canvas, pointed at the
+overlay. OBS has to be connected in Streamer.bot under `Stream Apps` ▸ `OBS Studio`.
+
+By hand: press *Copy URL*, add a **Browser** source in OBS, untick *Local file*, paste the URL and
+set it to 1920 × 1080. *Try the demo* plays sample rounds in your browser so you can place the
+source before anyone plays.
+
+***
+
+**Q: The OBS button says a source of that name already exists.**
+
+Source names are global in OBS, not per scene, so a name that is taken anywhere is left alone rather
+than overwritten. Either rename *Source* on the Overlay page and press the button again, or point
+the browser source you already have at the URL from *Copy URL*.
+
+***
+
+**Q: The overlay stays empty.**
+
+In order: *Send rounds to the overlay* is off; Streamer.bot's WebSocket server is off or on another
+port than the one on the Overlay page; its authentication is on and the URL has no `&password=`.
+Add `&debug=1` to the URL and the overlay says which of those it is in the corner.
+
+***
+
+**Q: Two chatters are playing — which round does the card show?**
+
+The newest one. Each chatter has their own round, but there is one card, so a round that starts
+takes it from the one before, and a battle takes it from a single-player round that is still
+running. The round that lost the card still finishes normally in chat.
+
+***
+
+**Q: Can I move it or restyle it?**
+
+The Overlay page does most of it: *Place*, *Size %*, the four switches for what the card shows, and
+the four colours. Those travel with the round, so a change shows up the next time somebody plays —
+OBS needs nothing done to it. Anything else goes in the Browser source's own *Custom CSS*, which is
+read after those settings and wins: `--rt-width`, `--rt-edge` and `--rt-radius` are the ones worth
+knowing. `&lang=de` switches the few words the card says itself. Nothing on the card is fetched from
+the internet, fonts included.
+
+---
+
 ## 🌐 Multi-Platform
 
 **Q: Which platforms play?**
