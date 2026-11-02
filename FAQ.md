@@ -9,11 +9,13 @@
 Under your Streamer.bot base directory:
 
 ```
-Chat Games/RhymeTime/RT-settings.json    ← settings and every chat message
-Chat Games/RhymeTime/RT-wordbank.json    ← the three word banks
+Chat Games/RhymeTime/RT-settings.json        ← settings and every chat message
+Chat Games/RhymeTime/RT-wordbank.json        ← the three word banks
+Chat Games/RhymeTime/uiframework.layout.json ← your layout of the window: theme, renamed or hidden pages and fields
+UIFramework/lib/<version>/UIFramework.dll    ← the settings window, downloaded on first open
 ```
 
-Editing either by hand is never necessary — the settings window writes both.
+Editing them by hand is never necessary — the settings window writes all of it.
 
 ***
 
@@ -32,19 +34,45 @@ opens; triggering it again brings the one you have to the front.
 
 ***
 
+**Q: What is UIFramework.dll, and why does the window want to download something?**
+
+The settings window is no longer part of the import. It lives in [UIFramework for streamer.bot](https://github.com/aaskjer/UIFramework-Streamer.bot),
+one window shared by all of these chat games, so a fix or a new feature there reaches every game at once. The
+`[RT] - Settings` action only loads that DLL and hands it the game's settings table.
+
+The first open asks before fetching anything. `Yes` downloads the file from the UIFramework releases, checks it
+against the SHA-256 published next to it and puts it in `UIFramework\lib\<version>\` under your Streamer.bot
+folder. `No` opens that folder so you can place the file yourself. Later releases are offered the same way;
+`Cancel` skips one, and `"autoUpdate": false` in `uiframework.layout.json` stops the check altogether. If the log
+says `UIFramework.dll was not found`, open the window again and answer `Yes`, or put the DLL from the
+[releases](https://github.com/aaskjer/UIFramework-Streamer.bot/releases) into that folder by hand.
+
+***
+
+**Q: Can I rearrange the window?**
+
+Yes. The pencil at the bottom left switches to the customise mode: drag a field onto another to reorder it, onto a
+page in the rail to move it there, right-click for *Rename*, *Hide* and *Move to page*; pages can be renamed,
+reordered, given another icon or hidden the same way. The bar on top picks the accent colour, and *Reset layout*
+puts everything back. It all lives in `uiframework.layout.json` next to `RT-settings.json`, so an update of the
+game never undoes it. A hidden field keeps its value.
+
+***
+
 **Q: The settings file is damaged. Did I lose everything?**
 
 No. Every save keeps the copy it replaced as `RT-settings.json.bak`. If the file cannot be parsed,
 the window sets it aside as `RT-settings.json.broken`, loads the `.bak`, and tells you which of the
 two happened. The game itself falls back to the defaults for that round rather than failing, so a
-damaged file never leaves chat without an answer.
+damaged file never leaves chat without an answer. `RT-wordbank.json` is kept the same way: a `.bak`
+beside it, a damaged file set aside as `.broken`, and the round plays on the backup or the shipped words.
 
 ***
 
 **Q: How do I reset the settings?**
 
 The circular arrow at the bottom left resets every page, the half arrow only the page in front of
-you. Both ask first. Neither touches the word banks — those have *Restore this bank* on their own
+you. Both ask first. Neither touches the word banks — those have *Restore defaults* on the Word banks
 page, per bank.
 
 ***

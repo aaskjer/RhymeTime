@@ -20,9 +20,18 @@ change that there if you want someone else to be able to open a battle.
 Go to `Actions`, select `[RT] - Settings`, right-click the `Test` trigger and choose `Test Trigger`.
 That opens the settings window.
 
+The first time, a small dialog asks whether to download `UIFramework.dll` — the settings window itself, shared by
+all of these chat games and kept at [aaskjer/UIFramework-Streamer.bot](https://github.com/aaskjer/UIFramework-Streamer.bot).
+`Yes` fetches it (about 190 KB, checked against its published hash) into `UIFramework\lib\<version>\` next to
+Streamer.bot and opens the window. `No` opens that folder instead, for when you would rather drop the file in by
+hand from the [releases](https://github.com/aaskjer/UIFramework-Streamer.bot/releases). When a newer window is
+released the same dialog comes back once; `Cancel` skips that version.
+
 Eight pages sit on the rail down the left side. `Ctrl+1` to `Ctrl+8` jump between them, `Ctrl+S`
 saves. Every field carries a tooltip, so hovering usually answers the question faster than this page
-does.
+does. The pencil at the bottom left opens the customise mode: rename, reorder, hide or move pages and
+fields by drag and drop or from their context menu, pick an accent colour, and the window keeps that
+layout in `uiframework.layout.json` next to the settings — through every update of the game.
 
 Twitch, YouTube and Kick all play, always — there is nothing to switch on. Restrict the
 Streamer.bot commands if you want the game off a platform.
@@ -62,8 +71,9 @@ The minimum and maximum bet from the Game page apply to a staked battle as well.
 ## Word banks
 <p align="center"><img alt="Word banks page" src="https://github.com/aaskjer/RhymeTime/blob/main/Assets/setup-guide/word-banks.png?raw=true"></p>
 
-One target per row with its rhymes beside it, separated by commas. The picker at the top chooses
-which of the three banks you are editing; all three are saved together.
+One target per row with its rhymes beside it, separated by commas. The three banks sit one under the
+other, each with *Add row* and *Restore defaults*; a row's ✕ removes it, and rows left empty are dropped
+when you save. All three are saved together into `RT-wordbank.json`.
 
 The rhymes you list are examples, not the whole answer: what they have in common at the end is what
 the round accepts. Three rhymes ending in `AT` accept any dictionary word ending in `AT`. One lonely
@@ -114,16 +124,16 @@ followed by that password to the end of the URL.
 
 ### Set it up in OBS
 
-**Set the overlay up in OBS** does the rest for you: it saves, writes the overlay page, and over
+Save first, then **Set the overlay up in OBS** does the rest for you: it writes the overlay page, and over
 Streamer.bot's OBS connection creates the scene and puts a browser source in it, the size of your
-canvas, pointed at the overlay. OBS has to be connected in Streamer.bot under
+canvas, pointed at the overlay. The outcome is in the status line and in Streamer.bot's log. OBS has to be connected in Streamer.bot under
 `Stream Apps` ▸ `OBS Studio`. *Connection #* is 0 unless you have more than one OBS there; *Scene*
 is created if it is not there yet, and a *Source* name OBS already knows is left alone rather than
 overwritten.
 
-By hand works too: *Copy URL* writes the page to `Chat Games/RhymeTime/Overlay` and copies its
-address — saving with the overlay on writes it as well — then add a **Browser** source in OBS,
-untick *Local file*, paste the URL and set the size to 1920 × 1080. *Try the demo* opens the same
+By hand works too: *Copy the overlay URL* writes the page to `Chat Games/RhymeTime/Overlay` and copies
+its address — the first round with the overlay on writes it as well — then add a **Browser** source in
+OBS, untick *Local file*, paste the URL and set the size to 1920 × 1080. *Try the demo* opens the same
 page in your browser playing sample rounds, which is the easiest way to place and size the source
 before anyone plays.
 
@@ -159,11 +169,13 @@ Streamer.bot.
 The rules in short, and where the two files live:
 
 ```
-Chat Games/RhymeTime/RT-settings.json    ← everything on these pages, every chat line
-Chat Games/RhymeTime/RT-wordbank.json    ← the three word banks
+Chat Games/RhymeTime/RT-settings.json        ← everything on these pages, every chat line
+Chat Games/RhymeTime/RT-wordbank.json        ← the three word banks
+Chat Games/RhymeTime/uiframework.layout.json ← your layout of the window: theme, renamed or hidden pages and fields
+UIFramework/lib/<version>/UIFramework.dll    ← the settings window, downloaded on first open
 ```
 
-Both sit under your Streamer.bot folder. Editing them by hand is never necessary — the settings
+All of it sits under your Streamer.bot folder. Editing them by hand is never necessary — the settings
 window writes all of it, keeps the previous copy as `.bak`, and sets a damaged file aside as
 `.broken` rather than overwriting it.
 
@@ -171,8 +183,8 @@ window writes all of it, keeps the previous copy as `.bak`, and sets a damaged f
 <p align="center"><img alt="About page" src="https://github.com/aaskjer/RhymeTime/blob/main/Assets/setup-guide/about.png?raw=true"></p>
 
 The version, the links to the repository and the releases, and what the buttons along the bottom do.
-Opening the window also asks GitHub for the latest release in the background; if there is a newer
-one, a pill appears in the header.
+Opening the window also asks GitHub for the latest release in the background and says so on this page
+when there is a newer one.
 
 ---
 
