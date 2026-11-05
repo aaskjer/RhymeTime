@@ -10,9 +10,10 @@ Click `Import`, then `Yes` on both popups that follow.
 ## Enable Commands
 <p align="center"><img alt="grafik" src="https://github.com/user-attachments/assets/004c325b-8673-430d-91b9-72c9a8931663"></p>
 
-Both commands ship disabled. Enable `!Rhyme` and `!RhymeBattle` in the `Commands` tab, or nothing
+The commands ship disabled. Enable `!Rhyme` and `!RhymeBattle` in the `Commands` tab, or nothing
 answers in chat. `!RhymeBattle` is restricted to the `Moderators` group on the command itself —
-change that there if you want someone else to be able to open a battle.
+change that there if you want someone else to be able to open a battle. `!SetFreeRhyme` and
+`!EndFreeRhyme` switch Free mode from chat; they are for Moderators too, enable them if you want them.
 
 # Setup
 <p align="center"><img alt="grafik" src="https://github.com/user-attachments/assets/8452f85a-daf0-4574-a28c-e9fd0c2eeecf"></p>
@@ -48,8 +49,9 @@ fills `{currency}`. Currency Core by StreamUP and LOYALTY POINTS by tawmae are f
 and override both fields, Currency Core first, so those two need nothing from you.
 
 Then the bets and the payout. The default bet is what `!Rhyme` stakes without
-an amount; the minimum and maximum frame what a chatter may type. Set the default bet to `0` and the
-game is **free**: nothing is staked and nothing is paid out, and the header says so.
+an amount; the minimum and maximum frame what a chatter may type. Switch on **Free mode**, or set the
+default bet to `0`, and the game is **free**: nothing is staked and nothing is paid out, and the header
+says so. `!SetFreeRhyme` and `!EndFreeRhyme` flip the switch from chat, with a message each.
 
 The payout multipliers are per word bank: a win pays the stake times the multiplier of the bank the
 word came from.
