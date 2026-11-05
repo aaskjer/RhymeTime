@@ -3,6 +3,16 @@
 Releases are in the [release notes](https://github.com/aaskjer/RhymeTime/releases).
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [2.1.0] - Unreleased
+
+### Changed
+- **The settings action is UIFramework's generic stub.** `[RT] - Settings` carries no layout and no game code any
+  more: `RhymeTime Game` declares its window (pages, the `!Rhyme` cooldowns, help and about) beside its settings
+  table and answers the window itself (the Overlay page's buttons, the check before saving). Needs UIFramework
+  0.9.3 or newer, which the stub fetches; the overlay URL reaches the clipboard through the window.
+- **German.** With the window's language set to `de` (the pencil, then *Sprache*), every setting, section, page
+  and message of the window reads in German. The help and about pages stay English.
+
 ## [2.0.0] - 2026-11-01
 
 The settings window moved into [UIFramework for streamer.bot](https://github.com/aaskjer/UIFramework-Streamer.bot),
