@@ -3,7 +3,7 @@
 Releases are in the [release notes](https://github.com/aaskjer/RhymeTime/releases).
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [2.2.0] - Unreleased
+## [2.2.0] - 2026-11-07
 
 ### Added
 - **Custom triggers.** Every settled round fires `RT: Round Won`, `RT: Round Lost` or `RT: Round Timeout`, and
@@ -28,7 +28,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - **An Overlay pill in the window's header** says whether rounds reach the OBS overlay (*Overlay on* / *Overlay
   off*), like the Free game pill.
 
-## [2.1.0] - Unreleased
+### Changed
+- **The word banks are a table.** One line per word, edited where it stands, with a search box above; Delete
+  removes the picked rows.
+- The host block in `RhymeTime Game` and `RhymeTime Battle` is UIFramework's current one (0.9.11). Nothing changes
+  in the window; it needs UIFramework 0.9.11 or newer, which the settings action fetches.
+
+## [2.1.0] - 2026-11-07
 
 ### Changed
 - **The settings action is UIFramework's generic stub.** `[RT] - Settings` carries no layout and no game code any
