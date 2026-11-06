@@ -49,8 +49,12 @@ i think... BEAM
   don't look like an attempt are ignored.
 - 📚 **Three word banks.** Easy, medium and hard, each with its own payout multiplier: 1.5×, 2× and 3× by
   default.
-- 💰 **Bets or free play.** Chatters stake a number or `all`, `half`, `third`, `quarter`, `random`. A default
-  bet of `0` makes the whole game free.
+- 💰 **Bets or free play.** Chatters stake a number or `all`, `half`, `third`, `quarter`, `random`. A Free mode
+  switch, or a default bet of `0`, makes the whole game free; `!SetFreeRhyme` and `!EndFreeRhyme` (moderators)
+  switch it from chat.
+- 🔔 **Hooks for your own actions.** Custom triggers for every won, lost or timed-out round and battle, and for
+  Free mode switching, with the round as arguments; `GetLastRoundResult` and `GetLastBattleResult` hand them to
+  any action.
 - 📺 **An overlay for OBS.** The word on stream with its countdown and the attempts left, then the winning
   rhyme and what it paid. It ships with the import, runs on Streamer.bot's own WebSocket server, and one
   button sets it up in OBS. Place, size, colours and what it shows are all in the window.

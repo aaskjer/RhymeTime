@@ -3,6 +3,25 @@
 Releases are in the [release notes](https://github.com/aaskjer/RhymeTime/releases).
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [2.2.0] - Unreleased
+
+### Added
+- **Custom triggers.** Every settled round fires `RT: Round Won`, `RT: Round Lost` or `RT: Round Timeout`, and
+  `RT: Round Settled` every time (Custom > Chat Game > RhymeTime), with the round as arguments: `roundOutcome`,
+  `roundUser`, `roundUserId`, `roundPlatform`, `roundWord`, `roundGuess`, `roundDifficulty`, `roundBet`,
+  `roundAmount`, `roundAttempts`, `roundPreviousPoints`, `roundNewPoints`, `roundCurrency`, `roundFree`. A battle
+  fires `RT: Battle Won` or `RT: Battle Timeout` and `RT: Battle Settled`, with `battleOutcome`, `battleWinner`,
+  `battleWinnerId`, `battlePlatform`, `battleWord`, `battleGuess`, `battleDifficulty`, `battleStake`,
+  `battleReward`, `battleStarter`, `battleStarterId`, `battlePreviousPoints`, `battleNewPoints`,
+  `battleCurrency`. `GetLastRoundResult` (RhymeTime Game) and `GetLastBattleResult` (RhymeTime Battle), run
+  with an Execute C# Method sub-action, hand the same arguments to any other action.
+- **Free mode, and from chat.** A *Free mode* switch on the Game page (a default bet of 0 is free as before);
+  `!SetFreeRhyme` turns it on and `!EndFreeRhyme` turns it off (moderators; two new commands in the import,
+  disabled until you enable them). The switch is written into the settings file, so the window's pill shows it,
+  and chat gets the new Started and Ended messages (Messages page, Free mode). An action of your own can do the
+  same with an Execute C# Method on `StartFreeGame` or `EndFreeGame`. `RT: Free Game Start` and
+  `RT: Free Game End` fire with it.
+
 ## [2.1.0] - Unreleased
 
 ### Changed
