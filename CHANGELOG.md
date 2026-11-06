@@ -3,6 +3,47 @@
 Releases are in the [release notes](https://github.com/aaskjer/RhymeTime/releases).
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [2.0.0] - 2026-11-01
+
+The settings window moved into [UIFramework for streamer.bot](https://github.com/aaskjer/UIFramework-Streamer.bot),
+one window shared by all of these chat games. The game and the battle play exactly as before; what changed is how
+the settings are shown and stored.
+
+### Changed
+
+- **One DLL, downloaded on first open.** `[RT] - Settings` is now a small stub. The first time you open the window
+  it asks whether to download `UIFramework.dll` from GitHub (about 190 KB, checked against its published SHA-256)
+  or to show the folder it belongs in, `UIFramework\lib\<version>\` next to Streamer.bot. Nothing is fetched
+  without that click. When a newer UIFramework is published, opening the window offers it once: *Yes* downloads,
+  *No* asks again next time, *Cancel* skips that version.
+- **The window is built from the game's own settings table.** The game declares every setting once and answers the
+  window's `uiframework.describe` request with it, so the window and the game can never disagree about a key, a
+  default or a range again.
+- **The word banks are edited in place.** All three sit on the Word banks page, each with *Add row* and *Restore
+  defaults*, still in `RT-wordbank.json`, the file the game and the battle read. Empty rows are dropped on save.
+- **Customise mode.** The pencil at the bottom left lets you rename, reorder, hide and move pages and fields by drag
+  and drop or from the context menu, and pick the accent colour. It lives in `uiframework.layout.json` next to
+  `RT-settings.json` and survives every import of the game.
+- `RT-settings.json` keys are camelCase now (`useBot`, `minBet`, `globalCooldown`, `overlayAccentColour`). An
+  existing file keeps working: the old names are read through aliases, and the first save writes the new ones.
+- Light/dark and the rainbow mode live in `uiframework.layout.json` and are shared with every other window built on
+  UIFramework. An existing `DarkMode` is taken over on the first open.
+- Values typed out of range are pulled back into range when the game reads them, not only when the window saves.
+- The overlay page is carried by the `RhymeTime Game` action now and written when the window asks for it (copying
+  the URL, the demo, the OBS setup) or when a round with the overlay on finds it missing.
+- Closing the window with unsaved changes asks first, from Cancel and from the title bar's X alike; a recompile or
+  shutdown in Streamer.bot closes it without asking.
+
+### Fixed
+
+- **A damaged `RT-wordbank.json` is no longer quietly thrown away.** The game sets the damaged file aside as
+  `RT-wordbank.json.broken`, falls back to the `.bak` from before the last save, and never writes the shipped words
+  over a file somebody typed into. The window shows the defaults for that bank until you save.
+
+### Removed
+
+- The window's own WPF code and update check (about 4,500 lines) left the import; the DLL carries them now.
+
 ## [1.1.0] - 2026-10-30
 
 ### Added
