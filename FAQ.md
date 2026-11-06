@@ -130,6 +130,7 @@ it off.
 | *just type in chat* | Everyone | Your answer |
 | `!RhymeBattle` | Moderators | Opens a battle paying the battle reward |
 | `!RhymeBattle 500` | Moderators | Opens one and stakes 500 of their own |
+| `!SetFreeRhyme` · `!EndFreeRhyme` | Moderators | Turns Free mode on or off, with a message to chat |
 
 These are the names as they come in the import; rename them in Streamer.bot's `Commands` tab if you
 like. The scripts follow the command, not its name.
@@ -232,9 +233,23 @@ Defaults are 1.5× easy, 2× medium and 3× hard, all on the Game page. A lost r
 
 **Q: Can I run the game without points?**
 
-Yes. Put the **default bet** at `0` and the game is free: nothing is staked, nothing is paid out,
-and an amount typed after the command is ignored. The window shows a *Free game on* pill while that
-is the case, so a message about points means what it says.
+Yes. Switch on **Free mode** on the Game page, or put the **default bet** at `0`, and the game is free:
+nothing is staked, nothing is paid out, and an amount typed after the command is ignored. The window
+shows a *Free game on* pill while the switch is on. `!SetFreeRhyme` and `!EndFreeRhyme` (moderators)
+flip the switch from chat and tell chat so; your own actions can listen to `RT: Free Game Start` and
+`RT: Free Game End`, or flip it themselves with an Execute C# Method on `StartFreeGame` or `EndFreeGame`.
+
+***
+
+**Q: Can my own actions react to a round or a battle?**
+
+Yes. Every settled round fires a custom trigger (Custom > Chat Game > RhymeTime): `RT: Round Won`,
+`RT: Round Lost` or `RT: Round Timeout`, and `RT: Round Settled` every time, with `roundOutcome`,
+`roundUser`, `roundWord`, `roundGuess`, `roundBet`, `roundAmount`, `roundNewPoints` and more as
+arguments. A battle fires `RT: Battle Won` or `RT: Battle Timeout` and `RT: Battle Settled`, with
+`battleWinner`, `battleWord`, `battleReward` and the rest. `GetLastRoundResult` and `GetLastBattleResult`,
+run with an Execute C# Method sub-action on the game or battle action, hand the same arguments to any
+other action.
 
 ***
 
@@ -406,7 +421,8 @@ overlay. OBS has to be connected in Streamer.bot under `Stream Apps` ▸ `OBS St
 
 By hand: press *Copy URL*, add a **Browser** source in OBS, untick *Local file*, paste the URL and
 set it to 1920 × 1080. *Try the demo* plays sample rounds in your browser so you can place the
-source before anyone plays.
+source before anyone plays, and **Show a sample round** plays one on the overlay already in OBS. The *Overlay on* /
+*Overlay off* pill in the window's header says whether real rounds reach it.
 
 ***
 
