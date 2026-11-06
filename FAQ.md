@@ -421,7 +421,8 @@ overlay. OBS has to be connected in Streamer.bot under `Stream Apps` ▸ `OBS St
 
 By hand: press *Copy URL*, add a **Browser** source in OBS, untick *Local file*, paste the URL and
 set it to 1920 × 1080. *Try the demo* plays sample rounds in your browser so you can place the
-source before anyone plays.
+source before anyone plays, and **Show a sample round** plays one on the overlay already in OBS. The *Overlay on* /
+*Overlay off* pill in the window's header says whether real rounds reach it.
 
 ***
 

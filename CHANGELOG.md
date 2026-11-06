@@ -21,6 +21,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   and chat gets the new Started and Ended messages (Messages page, Free mode). An action of your own can do the
   same with an Execute C# Method on `StartFreeGame` or `EndFreeGame`. `RT: Free Game Start` and
   `RT: Free Game End` fire with it.
+- **Show a sample round.** A new button beside *Set the overlay up in OBS* plays one made-up round on every overlay
+  that is open, the one in OBS included, in the look saved on the Overlay page, so you can see where the card sits
+  without anybody playing. It waits while a real round or battle is on the overlay. *Try the demo* still opens the
+  overlay in your browser with sample rounds; the overlay buttons now sit in two rows.
+- **An Overlay pill in the window's header** says whether rounds reach the OBS overlay (*Overlay on* / *Overlay
+  off*), like the Free game pill.
 
 ## [2.1.0] - Unreleased
 

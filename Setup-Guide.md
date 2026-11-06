@@ -131,7 +131,8 @@ Streamer.bot's OBS connection creates the scene and puts a browser source in it,
 canvas, pointed at the overlay. The outcome is in the status line and in Streamer.bot's log. OBS has to be connected in Streamer.bot under
 `Stream Apps` ▸ `OBS Studio`. *Connection #* is 0 unless you have more than one OBS there; *Scene*
 is created if it is not there yet, and a *Source* name OBS already knows is left alone rather than
-overwritten.
+overwritten. **Show a sample round** beside it then plays one made-up round on the overlay in OBS, in the look you
+saved, so you can check where the card sits; it waits while a real round or battle is showing.
 
 By hand works too: *Copy the overlay URL* writes the page to `Chat Games/RhymeTime/Overlay` and copies
 its address — the first round with the overlay on writes it as well — then add a **Browser** source in
