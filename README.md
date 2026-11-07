@@ -61,23 +61,10 @@ i think... BEAM
 - ⚙️ **One settings window.** Eight pages with keyboard shortcuts, light and dark themes, and all 19 chat
   messages with a live preview.
 
----
-
-## ⚙️ Settings window
-
-The settings action opens a window from [UIFramework for streamer.bot](https://github.com/aaskjer/UIFramework-Streamer.bot),
-a separate DLL that is fetched automatically.
-
-- **First open:** a dialog asks whether to download `UIFramework.dll` from the framework's GitHub release into
-  `<Streamer.bot>\UIFramework\lib\`. The file is checked against its published SHA-256 before it is used. *No*
-  opens that folder so you can put the DLL there yourself; *Cancel* leaves everything as it is.
-- **Updates:** when a newer framework release is out, the window asks before it downloads anything. *Cancel* skips
-  that version for good.
-- **Turning the update check off:** put `"autoUpdate": false` into `uiframework.layout.json`, next to the settings
-  file `<Streamer.bot>\Chat Games\RhymeTime\RT-settings.json` (create it as `{ "autoUpdate": false }` if it is not there yet). The window then
-  opens with the DLL it has and asks nothing.
-- **Without the window:** the game itself never loads the DLL. Disable the settings action and the game plays on
-  with its settings file, which you can still edit by hand.
+<p align="center">
+  <img src="https://github.com/aaskjer/RhymeTime/blob/main/Assets/overlay/round.png?raw=true" alt="A round on the overlay" width="49%">
+  <img src="https://github.com/aaskjer/RhymeTime/blob/main/Assets/overlay/result.png?raw=true" alt="The winner of that round on the overlay" width="49%">
+</p>
 
 ---
 
