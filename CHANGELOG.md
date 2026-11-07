@@ -3,14 +3,26 @@
 Releases are in the [release notes](https://github.com/aaskjer/RhymeTime/releases).
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [2.2.1] - 2026-11-07
+## [2.3.0] - 2026-11-07
+
+### Added
+
+- **A Log page.** The game and the battle write a log file per day, `Chat Games\Logs\RT-log-yyyy-MM-dd.txt`: every
+  settled round and battle (win, loss, timeout) with the word, the guess, the bet and the points that moved. The
+  settings window's new Log page reads it, with filters by result, platform and day; *Write a log file per day* on that
+  page turns it off.
+- **A tour of the settings window.** The first time the window opens, a short tour rings one part after the other
+  (the pages, saving, the customise mode) and says what it does; the **?** at the top right shows it again.
+- **UIFramework 1.0.0.** Problems the window finds sit behind a red **i** in its header instead of on the About or
+  Log page, and *How to play*, *Log* and *About* sit together at the foot of the page list. The settings action
+  offers the new framework on its next open.
 
 ### Changed
 - **The settings action is UIFramework's stub 0.2.0.** When the game action hangs, the settings window waits 30
   seconds for its answer, then carries on and can be closed; before, it waited for good. A game that has not
   described itself for a minute no longer locks the settings until Streamer.bot restarts: the next run opens the
   window.
-- The host block is UIFramework's current one (0.10.0). It names every type in full, so it no longer depends on the
+- The host block is UIFramework's current one (1.0.0). It names every type in full, so it no longer depends on the
   action's `using` lines, and it can declare a tour of the window. Nothing changes in the window.
 
 ## [2.2.0] - 2026-11-07
