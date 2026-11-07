@@ -61,6 +61,11 @@ i think... BEAM
 - ⚙️ **One settings window.** Eight pages with keyboard shortcuts, light and dark themes, and all 19 chat
   messages with a live preview.
 
+<p align="center">
+  <img src="https://github.com/aaskjer/RhymeTime/blob/main/Assets/readme/overlay-round.png?raw=true" alt="A round on the overlay" width="49%">
+  <img src="https://github.com/aaskjer/RhymeTime/blob/main/Assets/readme/overlay-result.png?raw=true" alt="The winner of that round on the overlay" width="49%">
+</p>
+
 ---
 
 ## Credits
