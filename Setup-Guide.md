@@ -74,8 +74,9 @@ The minimum and maximum bet from the Game page apply to a staked battle as well.
 <p align="center"><img alt="Word banks page" src="https://github.com/aaskjer/RhymeTime/blob/main/Assets/setup-guide/word-banks.png?raw=true"></p>
 
 One target per row with its rhymes beside it, separated by commas. The three banks sit one under the
-other, each with *Add row* and *Restore defaults*; a row's ✕ removes it, and rows left empty are dropped
-when you save. All three are saved together into `RT-wordbank.json`.
+other, each a table edited where it stands: click a cell to change it, *Add row* adds one, *Remove row* or
+Delete takes the picked rows out, the search box above finds a word, and *Restore defaults* puts the shipped
+words back. Rows left empty are dropped when you save. All three are saved together into `RT-wordbank.json`.
 
 The rhymes you list are examples, not the whole answer: what they have in common at the end is what
 the round accepts. Three rhymes ending in `AT` accept any dictionary word ending in `AT`. One lonely
@@ -85,9 +86,9 @@ predictably.
 A target **with spaces in it** is a line to finish instead of a word to rhyme. Then the whole reply
 has to match one of the answers you listed, so write them out in full.
 
-A row only reaches the game once it has a target and at least one rhyme; the pill above the table
-counts the usable ones. *Restore this bank* puts the shipped words back into the bank you are
-looking at and leaves the other two alone. Nothing is written until you save.
+A row only reaches the game once it has a target and at least one rhyme; the count under the table
+says how many rows are filled in. *Restore defaults* puts the shipped words back into that bank and
+leaves the other two alone. Nothing is written until you save.
 
 ## Access
 <p align="center"><img alt="Access page" src="https://github.com/aaskjer/RhymeTime/blob/main/Assets/setup-guide/access.png?raw=true"></p>
