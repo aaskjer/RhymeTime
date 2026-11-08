@@ -1,5 +1,4 @@
-## RhymeTime import string for streamer.bot
- - ![GitHub Release](https://img.shields.io/github/v/release/aaskjer/RhymeTime)
+## RhymeTime import string for streamer.bot - ![GitHub Release](https://img.shields.io/github/v/release/aaskjer/RhymeTime)
 ![GitHub Release Date](https://img.shields.io/github/release-date/aaskjer/RhymeTime)
 
 ```bash
