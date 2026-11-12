@@ -22,11 +22,13 @@ Go to `Actions`, select `[RT] - Settings`, right-click the `Test` trigger and ch
 That opens the settings window.
 
 The first time, a small dialog asks whether to download `UIFramework.dll` — the settings window itself, shared by
-all of these chat games and kept at [aaskjer/UIFramework-Streamer.bot](https://github.com/aaskjer/UIFramework-Streamer.bot).
-`Yes` fetches it (about 190 KB, checked against its published hash) into `UIFramework\lib\<version>\` next to
-Streamer.bot and opens the window. `No` opens that folder instead, for when you would rather drop the file in by
-hand from the [releases](https://github.com/aaskjer/UIFramework-Streamer.bot/releases). When a newer window is
-released the same dialog comes back once; `Cancel` skips that version.
+all of these chat games and kept at
+[aaskjer/UIFramework-Streamer.bot](https://github.com/aaskjer/UIFramework-Streamer.bot). `Yes` fetches it (about
+190 KB, checked against its published hash) into `UIFramework\lib\<version>\` next to Streamer.bot and opens the
+window. `No` opens that folder instead, for when you would rather drop the file in by hand from the
+[releases](https://github.com/aaskjer/UIFramework-Streamer.bot/releases). When a newer window is released a dialog
+offers it: `No` skips that version, `Cancel` asks again at the next open. The dialog also says whether
+Streamer.bot has to be restarted for the new window.
 
 Eight pages sit on the rail down the left side. `Ctrl+1` to `Ctrl+8` jump between them, `Ctrl+S`
 saves. Every field carries a tooltip, so hovering usually answers the question faster than this page
