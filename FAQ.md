@@ -142,16 +142,20 @@ like. The scripts follow the command, not its name.
 **Q: How do chatters answer?**
 
 In ordinary chat, no command. Only the **last word** of the message is read, so "hmm maybe DREAM"
-answers `DREAM`. A line to finish reads the **whole** message instead, with punctuation and double
-spaces ignored.
+answers `DREAM`. A line to finish reads the **whole** message instead.
+
+Punctuation and symbols never get in the way: `dream!`, `(Dream.)` and `dream :)` all answer `DREAM`,
+and a line to finish is compared word by word, so double spaces and an apostrophe in the answer you
+typed into the word bank make no difference either.
 
 ***
 
 **Q: Does every wrong guess cost an attempt?**
 
 No — only guesses that look like an attempt. A guess counts as an attempt when it at least ends with
-the same two letters as one of the accepted endings; anything else in chat is ignored, so normal
-conversation does not burn through a round. The attempt limit is on the Game page.
+the same two letters as one of the accepted endings; in a line to finish it is the last word of the
+message that has to end like the last word of one of your answers. Anything else in chat is ignored,
+so normal conversation does not burn through a round. The attempt limit is on the Game page.
 
 ***
 
@@ -177,7 +181,8 @@ In this order:
 
 From the rhymes you listed. The game takes the longest ending enough of them share — at least two
 letters — so `BAT, HAT, MAT, FLAT` accepts anything ending in `AT`. A single listed rhyme has
-nothing to agree with, so half of it is used: `DOVE` alone accepts anything ending in `VE`.
+nothing to agree with, so half of it is used, never less than three letters: `DOVE` alone accepts
+anything ending in `OVE`.
 
 List two or three rhymes per word and the round behaves predictably. List one and it gets generous.
 
@@ -351,7 +356,8 @@ written until you save. Resetting the settings does not touch the word banks.
 
 The **Access** page. A name on the blocked list is ignored when they run the command, with no reply
 in chat, and so is everyone in a blocked Streamer.bot group (`Settings` → `Groups`). A group that
-does not exist is skipped and logged rather than failing the round.
+does not exist is skipped and logged rather than failing the round. It holds for a battle as well:
+a blocked chatter who types the winning rhyme does not win it.
 
 ***
 

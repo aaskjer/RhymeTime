@@ -82,11 +82,12 @@ words back. Rows left empty are dropped when you save. All three are saved toget
 
 The rhymes you list are examples, not the whole answer: what they have in common at the end is what
 the round accepts. Three rhymes ending in `AT` accept any dictionary word ending in `AT`. One lonely
-rhyme has nothing to agree with, so half of it is used — list two or three and the round behaves
-predictably.
+rhyme has nothing to agree with, so half of it is used, never less than three letters — list two or
+three and the round behaves predictably.
 
 A target **with spaces in it** is a line to finish instead of a word to rhyme. Then the whole reply
-has to match one of the answers you listed, so write them out in full.
+has to match one of the answers you listed, so write them out in full. It is compared word by word
+without punctuation, so an apostrophe or a comma in your answer does not keep a chatter from it.
 
 A row only reaches the game once it has a target and at least one rhyme; the count under the table
 says how many rows are filled in. *Restore defaults* puts the shipped words back into that bank and
@@ -168,6 +169,16 @@ these settings and wins:
 The URL takes `&platform=twitch` to show one platform's rounds only, `&lang=de` for the German
 wording, `&position=center` to overrule *Place*, and `&debug=1` to see whether it reached
 Streamer.bot.
+
+## Log
+
+Every settled round and battle, newest first: when it was, how it ended, who played, on which
+platform, the word, the guess, the difficulty, the stake and what it left them with. Filter by
+result, by platform or by day, search the lines, reload them, or open the folder they live in.
+
+The lines come from `Chat Games/Logs/RT-log-yyyy-MM-dd.txt`, one file per day, written by the game
+and the battle together. *Write a log file per day* at the foot of the page switches the writing off;
+the page then shows the days already written and nothing new is added.
 
 ## How to play
 <p align="center"><img alt="How to play page" src="https://github.com/aaskjer/RhymeTime/blob/main/Assets/setup-guide/how-to-play.png?raw=true"></p>

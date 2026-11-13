@@ -11,6 +11,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- **A line to finish no longer loses a round to ordinary chat.** Every message from the player used to count as a
+  failed attempt, so three lines of talk ended the round. A message counts now when its last word ends like the
+  last word of one of your answers, the same two letters a word needs.
+- **One listed rhyme gives a longer ending.** Half of the word, but never less than three letters: `DOVE` on its
+  own accepts anything ending in `OVE` instead of in `VE`, which used to let `HAVE`, `GIVE` and `MOVE` win.
+- **The attempt limit of a running round is the one it started with.** Changing it in the settings mid-round takes
+  effect with the next round, so the dots on the overlay and the limit always agree.
+
 - **The update question says when Streamer.bot needs a restart.** A newer UIFramework can be used at once only
   while none is running in your Streamer.bot; otherwise it takes effect after a restart. The dialog now says which
   of the two it is, and after such a download a note says it again: restart when it suits you, everything goes on
@@ -23,6 +31,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- **A rhyme with a `!` behind it counts.** Punctuation and symbols are dropped from a guess, on both sides of
+  every comparison: `dream!`, `(Dream.)` and `dream :)` all answer `DREAM`. They used to miss the word and not
+  even count as an attempt, so the chatter saw nothing happen at all.
+- **A line to finish is compared word by word.** Double spaces in what was typed, and an apostrophe or a comma in
+  the answer you wrote into the word bank, used to make the right answer unreachable.
+- **A free round needs no points.** A chatter whose points variable does not exist yet was turned away with
+  nothing in chat to say why, even when nothing was at stake. A free round no longer asks for a balance at all,
+  and a chatter who has never earned any counts as 0 in a game with stakes.
+- **A balance that cannot be read is left alone.** Winning, losing, a battle's stake and its refund worked from 0
+  when Streamer.bot could not hand over the current balance, which wrote that 0 back and wiped what the chatter
+  had. Nothing is written now, and the log says what was not paid.
+- **A round pays out to the chatter it belongs to.** Every chat line is handled on a thread of its own in one
+  shared instance, so a round that was settling could take its name, its id or its settings from whatever line
+  arrived meanwhile. A round and a battle now carry their player, platform and settings with them.
+- **The block list holds in a battle.** Somebody who may not play could still type the winning rhyme and be paid
+  the prize.
+- **A battle that times out reports the stake going back.** `battlePreviousPoints`, `battleNewPoints` and the log
+  line showed zeroes for the moderator who got their stake returned.
+- **The dictionary check is no longer switched off by TLS.** Where something pinned Streamer.bot to an older TLS,
+  the lookup at wordotron.com failed and every guess with the right ending passed unchecked.
+- **The word bank is written beside the file and swapped in**, the replaced file kept as `.bak`, so a write cut
+  short cannot leave half a word bank behind.
+- **Seconds to answer and how long the result shows keep the window's limits** when the file was edited by hand;
+  a hand-written number used to be able to stop a round from starting at all.
+- **The overlay stops waiting for an answer that never comes** (five seconds), so a dropped reply no longer
+  leaves it without the round it should pick up after a reload.
+- **A message whose platform cannot be told is not played.** It used to leave a round nothing could answer and a
+  state under a name no overlay asks for.
 - **A download GitHub does not deliver is tried three times** before the settings action gives up.
 - **No answer from the game shows as no answer.** A Try button said "done" and a table showed as empty when the
   game action did not answer.
