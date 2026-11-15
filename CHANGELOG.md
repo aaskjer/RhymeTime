@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - **aaskjer on Twitch** is back among the links of the About page.
+- **The window in French and Brazilian Portuguese.** Beside English, German and Spanish, the window's language
+  (the pencil, then *Language*) now offers French and Brazilian Portuguese. Buttons, dialogs, pages and the
+  settings these chat games share follow the language you pick; RhymeTime's own settings and messages read in
+  English, or in German.
 
 ### Changed
 
@@ -27,7 +31,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   *Cancel*, the X and Esc ask again at the next open. Closing the dialog used to skip the version for good.
 - **A skipped version is skipped in every game.** It is kept once, in `UIFramework\loader.json` beside
   Streamer.bot, and so is `"autoUpdate": false`. What a game's `uiframework.layout.json` holds is still read.
-- The settings action is 0.3.1, the host block UIFramework 1.9.0's. Nothing in your settings changes.
+- The settings action is 0.3.2, the host block UIFramework 2.0.0's, and the next open of the window offers
+  UIFramework 2.0.0. Nothing in your settings changes.
 
 ### Fixed
 
@@ -59,10 +64,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   leaves it without the round it should pick up after a reload.
 - **A message whose platform cannot be told is not played.** It used to leave a round nothing could answer and a
   state under a name no overlay asks for.
-- **A download GitHub does not deliver is tried three times** before the settings action gives up.
+- **A download GitHub does not deliver is tried three times** before the settings action gives up, also one that
+  breaks off halfway.
 - **No answer from the game shows as no answer.** A Try button said "done" and a table showed as empty when the
   game action did not answer.
 - **A late answer is not taken for the next one.** Every request to the game has a variable of its own.
+- **Saving leaves no moment without settings.** A round that started while the window swapped the new
+  `RT-settings.json` in was played on the defaults; the game now waits for the file. With only
+  `RT-settings.json.bak` left, the window reads it as the game does, where it showed the defaults and its first
+  save wrote them over your settings.
+- **Reset all keeps the word bank rows you have not saved yet.** The word banks are not reset, as the question
+  says, but rows typed and not saved were thrown away without a word.
+- **The questions after the check before saving stay with the window.** When you went to another window while
+  the game checked, *Check your settings* belonged to none: the settings window could be closed under it and not
+  opened again until it was answered.
+- **The Log page's folder button opens `Chat Games\Logs` beside Streamer.bot**, also after the window's Export or
+  Import, which used to make it create an empty folder elsewhere. Rounds settled in the same second show newest
+  first.
+- **The update notice names only a UIFramework the window would offer.** A version skipped with *No*, or any
+  while `"autoUpdate": false`, was named in chat at every start.
+- **A UIFramework another game installed for a newer settings action is left alone.** This game's update notice
+  loaded it as Streamer.bot started, and the settings window then would not open; the notice now loads the newest
+  one that fits. A damaged `UIFramework.dll` is passed over and set aside, so its version is offered again.
 
 ## [2.4.1] - 2026-11-12
 
