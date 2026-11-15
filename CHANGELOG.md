@@ -3,6 +3,90 @@
 Releases are in the [release notes](https://github.com/aaskjer/RhymeTime/releases).
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [2.4.2] - 2026-11-15
+
+### Added
+
+- **aaskjer on Twitch** is back among the links of the About page.
+- **The window in French and Brazilian Portuguese.** Beside English, German and Spanish, the window's language
+  (the pencil, then *Language*) now offers French and Brazilian Portuguese. Buttons, dialogs, pages and the
+  settings these chat games share follow the language you pick; RhymeTime's own settings and messages read in
+  English, or in German.
+
+### Changed
+
+- **A line to finish no longer loses a round to ordinary chat.** Every message from the player used to count as a
+  failed attempt, so three lines of talk ended the round. A message counts now when its last word ends like the
+  last word of one of your answers, the same two letters a word needs.
+- **One listed rhyme gives a longer ending.** Half of the word, but never less than three letters: `DOVE` on its
+  own accepts anything ending in `OVE` instead of in `VE`, which used to let `HAVE`, `GIVE` and `MOVE` win.
+- **The attempt limit of a running round is the one it started with.** Changing it in the settings mid-round takes
+  effect with the next round, so the dots on the overlay and the limit always agree.
+
+- **The update question says when Streamer.bot needs a restart.** A newer UIFramework can be used at once only
+  while none is running in your Streamer.bot; otherwise it takes effect after a restart. The dialog now says which
+  of the two it is, and after such a download a note says it again: restart when it suits you, everything goes on
+  as before until then.
+- **Closing the update question means "not now".** *Yes* takes the new UIFramework, *No* skips that version, and
+  *Cancel*, the X and Esc ask again at the next open. Closing the dialog used to skip the version for good.
+- **A skipped version is skipped in every game.** It is kept once, in `UIFramework\loader.json` beside
+  Streamer.bot, and so is `"autoUpdate": false`. What a game's `uiframework.layout.json` holds is still read.
+- The settings action is 0.3.2, the host block UIFramework 2.0.0's, and the next open of the window offers
+  UIFramework 2.0.0. Nothing in your settings changes.
+
+### Fixed
+
+- **A rhyme with a `!` behind it counts.** Punctuation and symbols are dropped from a guess, on both sides of
+  every comparison: `dream!`, `(Dream.)` and `dream :)` all answer `DREAM`. They used to miss the word and not
+  even count as an attempt, so the chatter saw nothing happen at all.
+- **A line to finish is compared word by word.** Double spaces in what was typed, and an apostrophe or a comma in
+  the answer you wrote into the word bank, used to make the right answer unreachable.
+- **A free round needs no points.** A chatter whose points variable does not exist yet was turned away with
+  nothing in chat to say why, even when nothing was at stake. A free round no longer asks for a balance at all,
+  and a chatter who has never earned any counts as 0 in a game with stakes.
+- **A balance that cannot be read is left alone.** Winning, losing, a battle's stake and its refund worked from 0
+  when Streamer.bot could not hand over the current balance, which wrote that 0 back and wiped what the chatter
+  had. Nothing is written now, and the log says what was not paid.
+- **A round pays out to the chatter it belongs to.** Every chat line is handled on a thread of its own in one
+  shared instance, so a round that was settling could take its name, its id or its settings from whatever line
+  arrived meanwhile. A round and a battle now carry their player, platform and settings with them.
+- **The block list holds in a battle.** Somebody who may not play could still type the winning rhyme and be paid
+  the prize.
+- **A battle that times out reports the stake going back.** `battlePreviousPoints`, `battleNewPoints` and the log
+  line showed zeroes for the moderator who got their stake returned.
+- **The dictionary check is no longer switched off by TLS.** Where something pinned Streamer.bot to an older TLS,
+  the lookup at wordotron.com failed and every guess with the right ending passed unchecked.
+- **The word bank is written beside the file and swapped in**, the replaced file kept as `.bak`, so a write cut
+  short cannot leave half a word bank behind.
+- **Seconds to answer and how long the result shows keep the window's limits** when the file was edited by hand;
+  a hand-written number used to be able to stop a round from starting at all.
+- **The overlay stops waiting for an answer that never comes** (five seconds), so a dropped reply no longer
+  leaves it without the round it should pick up after a reload.
+- **A message whose platform cannot be told is not played.** It used to leave a round nothing could answer and a
+  state under a name no overlay asks for.
+- **A download GitHub does not deliver is tried three times** before the settings action gives up, also one that
+  breaks off halfway.
+- **No answer from the game shows as no answer.** A Try button said "done" and a table showed as empty when the
+  game action did not answer.
+- **A late answer is not taken for the next one.** Every request to the game has a variable of its own.
+- **Saving leaves no moment without settings.** A round that started while the window swapped the new
+  `RT-settings.json` in was played on the defaults; the game now waits for the file. With only
+  `RT-settings.json.bak` left, the window reads it as the game does, where it showed the defaults and its first
+  save wrote them over your settings.
+- **Reset all keeps the word bank rows you have not saved yet.** The word banks are not reset, as the question
+  says, but rows typed and not saved were thrown away without a word.
+- **The questions after the check before saving stay with the window.** When you went to another window while
+  the game checked, *Check your settings* belonged to none: the settings window could be closed under it and not
+  opened again until it was answered.
+- **The Log page's folder button opens `Chat Games\Logs` beside Streamer.bot**, also after the window's Export or
+  Import, which used to make it create an empty folder elsewhere. Rounds settled in the same second show newest
+  first.
+- **The update notice names only a UIFramework the window would offer.** A version skipped with *No*, or any
+  while `"autoUpdate": false`, was named in chat at every start.
+- **A UIFramework another game installed for a newer settings action is left alone.** This game's update notice
+  loaded it as Streamer.bot started, and the settings window then would not open; the notice now loads the newest
+  one that fits. A damaged `UIFramework.dll` is passed over and set aside, so its version is offered again.
+
 ## [2.4.1] - 2026-11-12
 
 ### Fixed
